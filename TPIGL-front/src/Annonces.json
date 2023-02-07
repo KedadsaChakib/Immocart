@@ -1,0 +1,194 @@
+[
+{ "id": "1",
+  "photos":[],
+  "titre": "Vente Appartement F5 Saoula", 
+  "location": {
+            "address": "",
+            "area" : "",
+            "city" : "Ruisseau",
+            "state" :"Alger",
+            "zoom": 5,
+            "mapPosition":{
+              "lat":30,
+              "lng":4
+            },
+            "markerPosition":{
+              "lat":30,
+              "lng":4
+            }
+},
+  "typeDeTransaction": "Vente",
+  "typeDuBien": "Appartement",
+  "surface": "100",
+  "date": "12/02/2022",
+  "prix": "1000000",
+  "description" :"",
+  "proprietaire": {
+            "nom":"Kedadsa",
+            "prenom":"Islam",
+            "address":"smfj",
+            "email": "fsdjmq",
+            "numero1":"sfdl"
+        }
+},
+{ "id": "2",
+  "photos":[], 
+  "titre": "Echange Appartement F5 Setif",
+  "location": {
+            "address": "",
+            "area" : "",
+            "city" : "Ain Arnat",
+            "state" :"Setif",
+            "zoom": 5,
+            "mapPosition":{
+              "lat":30,
+              "lng":4
+            },
+            "markerPosition":{
+              "lat":30,
+              "lng":4
+            }
+},
+  "typeDeTransaction": "Vente",
+  "typeDuBien": "Appartement",
+  "surface": "80",
+  "date": "12/02/2023",
+  "prix": "2000000",
+  "description" :"",
+  "proprietaire": {
+            "nom":"Kedadsa",
+            "prenom":"Islam",
+            "address":"smfj",
+            "email": "fsdjmq",
+            "numero1":"sfdl"
+        }
+},
+{ "id": "3",
+  "photos":[], 
+  "titre": "Vente Appartement F5 Saoula", 
+  "location": {
+            "address": "",
+            "area" : "",
+            "city" : "",
+            "state" :"",
+            "zoom": 5,
+            "mapPosition":{
+              "lat":30,
+              "lng":4
+            },
+            "markerPosition":{
+              "lat":30,
+              "lng":4
+            }
+},
+  "typeDeTransaction": "Vente",
+  "typeDuBien": "Appartement",
+  "surface": "100",
+  "date": "21/03/2021",
+  "prix": "800000",
+  "description" :"",
+  "proprietaire": {
+            "nom":"Kedadsa",
+            "prenom":"Islam",
+            "address":"smfj",
+            "email": "fsdjmq",
+            "numero1":"sfdl"
+        }
+},
+{ "id": 3,
+  "photos":[], 
+  "titre": "Vente Appartement F5 Saoula", 
+  "location": {
+            "address": "",
+            "area" : "",
+            "city" : "",
+            "state" :"",
+            "zoom": 5,
+            "mapPosition":{
+              "lat":30,
+              "lng":4
+            },
+            "markerPosition":{
+              "lat":30,
+              "lng":4
+            }
+},
+  "typeDeTransaction": "Vente",
+  "typeDuBien": "Appartement",
+  "surface": "100",
+  "date": "7/02/2022",
+  "prix": "3000000",
+  "description" :"",
+  "proprietaire": {
+            "nom":"Kedadsa",
+            "prenom":"Islam",
+            "address":"smfj",
+            "email": "fsdjmq",
+            "numero1":"sfdl"
+        }
+},
+{ "id": "4",
+  "photos":[], 
+  "titre": "Vente Appartement F5 Saoula", 
+  "location": {
+            "address": "",
+            "area" : "",
+            "city" : "",
+            "state" :"",
+            "zoom": 5,
+            "mapPosition":{
+              "lat":30,
+              "lng":4
+            },
+            "markerPosition":{
+              "lat":30,
+              "lng":4
+            }
+},
+  "typeDeTransaction": "Vente",
+  "typeDuBien": "Appartement",
+  "surface": "100",
+  "date": "2/02/2022",
+  "prix": "1300000",
+  "description" :"",
+  "proprietaire": {
+            "nom":"Kedadsa",
+            "prenom":"Islam",
+            "address":"smfj",
+            "email": "fsdjmq",
+            "numero1":"sfdl"
+        }
+},
+{ "id": "5",
+  "photos":[], 
+  "titre": "Vente Appartement F5 Saoula", 
+  "location": {
+            "address": "",
+            "area" : "",
+            "city" : "",
+            "state" :"",
+            "zoom": 5,
+            "mapPosition":{
+              "lat":30,
+              "lng":4
+            },
+            "markerPosition":{
+              "lat":30,
+              "lng":4
+            }
+},
+  "category": "Vente",
+  "typeDuBien": "Appartement",
+  "surface": "100",
+  "date": "05/02/2022",
+  "prix": "1000000",
+  "description" :"",
+  "proprietaire": {
+            "nom":"Kedadsa",
+            "prenom":"Islam",
+            "address":"smfj",
+            "email": "fsdjmq",
+            "numero1":"sfdl"
+        }
+}
+]

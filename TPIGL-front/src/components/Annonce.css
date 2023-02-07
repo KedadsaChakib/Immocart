@@ -1,0 +1,103 @@
+.Annonce{
+    position:relative;
+    display: flex;
+    flex-direction: column; 
+    width:309px;
+    height:394px;
+    border-radius: 10px; 
+    font-size: 16px;
+    padding: 5px;
+    text-align: left;
+    border: 1px solid rgba(0, 0, 0, 0.5);
+    filter: drop-shadow(0px 4px 4px rgba(0, 0, 0, 0.7));
+    background-color: #fff;
+}
+.container-info{
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    padding: 10px 5px;
+    font-size: 16px;;
+}
+.container-info >.localisation{
+    margin-top: 5px;;
+    padding-left: 5px;;
+    display: flex;
+    align-items: center;
+    justify-content: space-evenly;
+    
+}
+.container-info > .typ{
+    margin-top: 5px;;
+    padding-left: 5px;;
+    display: flex;
+    align-items: center;
+    justify-content: space-evenly;
+}
+.container-info >.surface{
+    margin-top: 5px;;
+    padding-left: 5px;;
+    display: flex;
+    align-items: center;
+    justify-content: space-evenly;
+}
+.container-info >.date{
+    margin-top: 5px;;
+    padding-left: 5px;;
+    font-size: 16px;;
+    display: flex;
+    align-items: center;
+    justify-content: space-evenly;
+}
+.container-title button{
+    border-radius: 50%;
+
+    border:none;
+    height: 26px;
+    width: 26px; 
+    padding-top: 4px;;
+    margin-left: 50px;
+    background-color: rgba(151, 53, 47, 0.5);
+    text-align: center;
+    font-size: 18px;
+    color: rgba(151, 53, 47, 1);
+}
+.container-title h2{
+    font-size: 16px;;
+    font-weight: 600;
+}
+.container-title {
+    display: flex;
+    justify-content:space-evenly;
+    align-items: flex-end;
+    padding-left: 5px;
+
+}
+.Annonce img{
+    width: 100%;
+    height: 40%;
+    border-radius: 5px;
+}
+.container-prix{
+    display: flex;
+    justify-content: space-evenly;
+    align-items: center;;
+    padding-left: 5px;
+}
+.container-prix button{
+    position:relative;
+    width: 89px;
+    height: 29px;
+    left: 40%;
+    top: -15%;
+    border: none;
+    border-radius: 30px;
+    background-color: rgba(0, 50, 81,0.3);
+    color: rgb(0, 50, 81);
+}
+.foter{
+    position: absolute;
+    top: 400%;
+    
+    width:100%;
+}

@@ -1,0 +1,105 @@
+.button-form-on-click{
+    text-align: center;
+    width: 140px;
+    height: 42px;
+    box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 6px;
+    background: #003251;
+    font-family: var(--font-outfit);
+    font-weight: 300;
+    font-size: 18px;
+    color: white;
+}
+.button-form{
+    text-align: center;
+    width: 140px;
+    height: 42px;
+    box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.8);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 6px;
+    background: white;
+    font-family: var(--font-outfit);
+    font-weight: 300;
+    font-size: 18px;
+    opacity: 29%;
+}
+.Transaction >.loading{
+
+}
+.Transaction >.circle1{
+
+}
+.Transaction >.numero1{
+
+}
+.Transaction >.circle-text1{
+
+}
+.Transaction >.circle2{
+
+}
+.Transaction >.numero2{
+
+}
+.Transaction > .circle-text2{
+
+}
+.Transaction > .large-container{
+
+}
+.Transaction > .form{
+
+}
+.Transaction > .sub-container{
+
+}
+.Transaction > .sub-container-entete{
+
+}
+.Transaction > .sub-container-entete-label{
+
+}
+.Transaction > .button-form-section{
+
+    padding: 20px;
+    display: flex;
+    justify-content: space-between;
+}
+.Transaction > .type-du-bien-section{
+
+}
+.Transaction > #type-du-bien-select{
+    
+}
+.Transaction > .surface-section{
+    
+}
+.Transaction > .prix-section{
+    
+}
+.Transaction > .location-section{
+    
+}
+.Transaction > .location-form-1-champ-section{
+    
+}
+.Transaction > .location-form-1-champ-map{
+    
+}
+.Transaction > .location-form-1-champ-section{
+    
+}
+.Transaction > .description-section{
+
+}
+.Transaction > .description-area{
+
+}
+.DeposerAnnonce > .continuer{
+
+}

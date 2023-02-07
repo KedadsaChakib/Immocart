@@ -1,0 +1,25 @@
+.category{
+    width: 174px;
+    height: 75px;
+    border-radius: 10px 0 0 10px ;
+}
+.city{
+    width: 174px;
+    height: 75px;
+    
+}
+.region{
+    width: 174px;
+    height: 75px;
+    
+}
+.type{
+    width: 174px;
+    height: 75px;
+    
+}
+.period{
+    width: 315px;
+    height: 75px;
+    border-radius: 0 10px 10px 0 ;
+}

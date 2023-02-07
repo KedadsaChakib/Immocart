@@ -1,0 +1,94 @@
+body.active-modal {
+    overflow-y: hidden;
+}
+.BiMessage{
+   margin-top: 30px; 
+   width: 40px;
+   height:40px;
+}
+h2{
+    margin-top: 40px;
+    font-weight: 400px;
+    font-size: 20px;
+    font-style: normal;
+}
+p{
+    margin-top: 20px;
+}
+.Deposer{
+    position: absolute;
+    width: 217px;
+    height: 48px;
+    left: calc(800px - 217px/2 + 423.5px);
+    top: 16px;
+    color: #F3F3F3;
+    font-size: 20px;
+    font-weight: 400;
+    background: #003251;
+    box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+    border-radius: 8px; 
+    cursor: pointer;
+}
+
+.modal, .overlay {
+    width: 100%;
+    height: 100%;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%,-50%);
+
+
+}
+.login-btn{
+    position: absolute;
+    left: 12%;
+    top : 70%;
+    padding: 125px,125px,5px,5px;
+    width:358px;
+    display:flex;
+    justify-content:center;
+    align-items: center;
+    height: 31px;
+    border-radius: 50px;
+    background-color: #003251;
+    color: #F3F3F3;
+filter: drop-shadow(0px 4px 4px rgba(0, 0, 0, 0.25));
+cursor: pointer;
+}
+.FaGoogle{
+    padding-left: 7px;
+    width:25px;
+    height: 25px;
+}
+.overlay {
+    background: rgba(49,49,49,0.5);
+}
+.modal-content {
+    position: fixed;
+    align-items: center;
+    text-align: center;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    line-height: 1.4;
+    background: #f1f1f1;
+    opacity: 90%;
+    padding: 14px 28px;
+    border-radius: 30px;
+    width: 470px;
+    height: 400px;
+}
+
+.close-modal {
+    position: absolute;
+    top: 10px;
+    left: 10px;
+    border: none;
+    padding: 5px 7px;
+}
+.GrClose{
+    width: 25px;
+    height: 25px;
+    cursor: pointer
+}
