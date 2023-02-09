@@ -35,7 +35,7 @@ function Dropzone({ onDrop, accept}) {
 
   // ImageList Component//
 
-const ImageGrid = ({stateChanger,images }) => {
+const ImageGrid = ({stateChanger,images,deletingInParent}) => {
     // render each image by calling Image component
     // Return the list of files //
     const dragItem = useRef();
@@ -58,21 +58,22 @@ const ImageGrid = ({stateChanger,images }) => {
         dragItem.current = null;
         dragOverItem.current = null;
         stateChanger(copyListItems);
+        deletingInParent(copyListItems);
       };
       const removeElement = (index) => {
         const newFruits = images.filter((_, i) => i !== index);
         stateChanger(newFruits);
+        deletingInParent(newFruits)
       };
     return (
         <div className="file-list">{
         images.map((image ,index) => {
         return (
-            <>
             <div className="image-view" 
+            key={index}
             onDragStart={(e) => dragStart(e, index)}
             onDragEnter={(e) => dragEnter(e, index)}
             onDragEnd={drop}
-            key={index}
             draggable>
                 <img className="file-img" src={image.src} alt= "" />
                 <div className="image-position">
@@ -82,7 +83,6 @@ const ImageGrid = ({stateChanger,images }) => {
                     </div>
                 </div>
             </div>
-            </>
         )
     })}
         </div>
@@ -90,8 +90,7 @@ const ImageGrid = ({stateChanger,images }) => {
 };  
 
 
-function DeposerPhotos() {
-    const [inputs, setInputs] = useState({});
+function DeposerPhotos({data,setData,passPhotosToParent}) {
     const [images, setImages] = useState([]);
 
     const onDrop = useCallback((acceptedFiles) => {
@@ -102,6 +101,10 @@ function DeposerPhotos() {
             ...prevState,
             {src: e.target.result },
             ]);
+        passPhotosToParent((prevState) => [
+                ...prevState,
+                {src: e.target.result },
+                ])
         };
         reader.readAsDataURL(file);
         return file;
@@ -110,7 +113,6 @@ function DeposerPhotos() {
 
     const handleSubmit = (event) => {
     event.preventDefault();
-    alert(inputs);
     }
 
     return (
@@ -131,8 +133,8 @@ function DeposerPhotos() {
         <form className="form-image" onSubmit={handleSubmit}>
             <div className="image-container-section">
                 <Dropzone onDrop={onDrop} accept={"image/*"} />
-                {console.log(images)}
-                <ImageGrid stateChanger={setImages} images={images} />
+                {/* {console.log(images)} */}
+                <ImageGrid stateChanger={setImages} images={images} deletingInParent={passPhotosToParent}/>
             </div>
         </form>
     </div>

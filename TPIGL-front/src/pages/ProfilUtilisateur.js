@@ -1,6 +1,8 @@
 import React, { useState, useEffect,useCallback ,useRef} from "react";
 import LogedNavBar from "../components/LogedNavBar";
 import Navbar from "../components/Navbar";
+import { useParams } from "react-router-dom";
+import axios from "axios";
 import "../App.css";
 
 
@@ -11,13 +13,13 @@ function Titre({titre}) {
         </div>
     )
 }
-function Image({images,personalInfo}){
+function Image({image,personalInfo}){
   return(
       <div className="image-profil-container">
           <div className="image-profil-subcontainer">
 
           <div className="image-profil-container-cadre">
-              <img  src={images[0]} alt=""/>
+          <img src={`data:image/jpeg;base64,${image}`} alt="image" style={{width:"100%",height:"100%",objectFit:"cover"}}/>
           </div>
           <div className="image-profil-container-name">
               {personalInfo.nom + " " + personalInfo.prenom}
@@ -32,23 +34,37 @@ const ProfileUtilisateur = () => {
         {
             nom:"Kedadsa",
             prenom:"Islam",
-            address:"smfj",
             email: "fsdjmq",
-            numero1:"sfdl",
-            numero2:"ldfs",
+            sim:"sfdl",
+            image:"",
         }
     )
-    const [image,setImage]= useState("")
+    
+    const {id} = useParams()
+
     const current = window.location.pathname
-    useEffect(() =>{
-        console.log(current)
-    },[])
+    useEffect(() => {
+        axios.get(`http://172.20.10.3:8000/annonces/visiter/${id}`)
+              .then(response => {
+                setPersonalInfo(response.data)
+                // console.log (response.data)
+                // setPersonalInfo(response.data.profile)
+                // setMessages(Object.values(response.data.messages))
+                // setImages(response.data.profile.image)
+                // console.log(Object.values(response.data))
+              })
+              .catch(error => {
+                console.log("An error has occured")
+              }
+            );}, []);
+
+
     return (
     <>
-        {current===`/HomeConnected/Profil/12` ? <LogedNavBar/>:<Navbar />}
+        <LogedNavBar/>
         <div className="c-page">
             <Titre titre = {"Profil"} />
-            <Image images={image} personalInfo= {personalInfo}/>
+            <Image image={personalInfo.image} personalInfo= {personalInfo}/>
             <div className="profil-table-cadre"></div>
             <table className="profile-table" >
             <tbody>
@@ -82,7 +98,7 @@ const ProfileUtilisateur = () => {
               <tr>
               <td>
                     <div className="profile-table-label">Numero</div>
-                <div className="profile-table-content">{personalInfo.numero1}</div>
+                <div className="profile-table-content">{personalInfo.sim}</div>
                 </td>
               </tr>
             </tbody>

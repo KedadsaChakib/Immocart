@@ -1,4 +1,7 @@
 import React, { useState, useEffect,useCallback ,useRef} from "react";
+import axios from "axios";
+import LogedNavBar from "../components/LogedNavBar";
+import MenuBar from "../components/MenuBar";
 
 import "../App.css";
 import MaPremiereAnnonce from "../components/MaPremiereAnnonce";
@@ -13,13 +16,27 @@ function Titre({titre}) {
     )
 }
 
-function LesAnnonces({annonces}) {
+function LesAnnonces({annonces,setAnnonces}) {
+  
+  const handleClick =(index,id)=>{
+      const newAnnonces = annonces.filter((_, i) => i !== index);
+      setAnnonces(newAnnonces);
+      
+      axios.post(`http://172.20.10.3:8000/annonces/supprimer/${id}`)
+    .then(response => {
+      console.log(response);
+    })
+    .catch(error => {
+      console.error(error);
+    });
+
+    };
     return(
         <>
         {annonces?.length > 0 ? (
           <div className="app">
-            {annonces.map((Ai) => (
-              <MaPremiereAnnonce Ai={Ai} />
+            {annonces.map((Ai,index) => (
+              <MaPremiereAnnonce Ai={Ai} handleClick={handleClick} index={index}/>
             ))}
           </div>
         ) : (
@@ -34,7 +51,7 @@ function MesAnnoncesContainer(props) {
     return(
         <div className="c-page">
             <Titre titre = {props.titre} />
-            <LesAnnonces annonces = {props.annonces}/>
+            <LesAnnonces annonces = {props.annonces} setAnnonces={props.setAnnonces}/>
     </div>
     )
 }
@@ -54,16 +71,27 @@ const MesAnnonces = () => {
     },
   ]);
 
-    useEffect(() => {
-    //searchAi(userId)
-    }, []);
+  useEffect(() => {
+    axios.get('http://172.20.10.3:8000/annonces/mes_annonces')
+          .then(response => {
+            console.log (response.data)
+            console.log(Object.values(response.data))
+            setAnnonces(Object.values(response.data))
+          })
+          .catch(error => {
+            console.log("An error has occured")
+          }
+        );}, []);
 
 
     return (
         <>
-        <MesAnnoncesContainer annonces={annonces} titre={titre} />
+        {/* <LogedNavBar />
+        <MenuBar /> */}
+        <MesAnnoncesContainer annonces={annonces} titre={titre} setAnnonces={setAnnonces}/>
         </>
     )
   };
   
   export default MesAnnonces;
+     

@@ -13,7 +13,9 @@ const LogedNavBar = () =>{
         <>
             <div className="nav-container">
                 <div className="nav-container-center">
+                    <Link to="/HomeConnected">
                     <div className="nav-container-center-logo">IMMO CART</div>
+                    </Link>
                     <div className="nav-container-center-icons">
                         <Link className="nav-container-center-icons-icon" to="/HomeConnected/MonCompte/MesAnnonces">
                         <img src={annonceIcon} alt=""/>
@@ -25,7 +27,7 @@ const LogedNavBar = () =>{
                         <img src={profilIcon} alt=""/> 
                         </Link>
                     </div>
-                    <Link to="DeposerAnnonce">
+                    <Link to="/HomeConnected/DeposerAnnonce">
                         <div className="nav-container-center-button">
                             <div >Déposer une annonce</div>
                         </div>

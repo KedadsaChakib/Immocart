@@ -29,12 +29,11 @@ const App = () => {
             <Route index element={<MonProfil />} />
             <Route path="MesAnnonces" element={<MesAnnonces />} />
         </Route>
-          <Route path="/HomeConnected" element={<HomeConnected />}/>
           <Route path="/InscriptionForm" element={<InscriptionForm />}/>
-          <Route path="MonCompte/MesAnnonces" element={<MesAnnonces />} />
+          <Route path="/HomeConnected/MonCompte/MesAnnonces" element={<MesAnnonces />} />
           <Route path="HomeConnected/DeposerAnnonce" element={<DeposerAnnonce />} />
-          <Route path="/SearchResults" element={<SearchResults />}></Route>
-          <Route path="/HomeConnected/SearchResults" element={<SearchResults />}></Route>
+          <Route path="/SearchResults" element={<SearchResults />}/>
+          <Route path="/HomeConnected/SearchResults" element={<SearchResults />} />
           <Route path="/Annonces/:id" element={<DetailsAnnonce />} />
           <Route path="HomeConnected/Profil/:id" element={<ProfilUtilisateur />} />
           <Route path="Profil/:id" element={<ProfilUtilisateur />} />

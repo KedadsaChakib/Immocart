@@ -12,7 +12,7 @@ export default function Modal() {
     var my_user = jwt_decode(response.credential) ; 
     console.log("now the real use under the mask is : " );
     console.log(my_user);
-    axios.get('http://benabbes05ilyes.pythonanywhere.com/annonces/check/' + my_user.email)
+    axios.get('http://172.20.10.3:8000/annonces/check/' + my_user.email)
           .then(response => { 
             console.log(response) 
             if(response.data.exist === "True"){

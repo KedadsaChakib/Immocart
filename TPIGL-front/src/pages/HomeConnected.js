@@ -10,27 +10,24 @@ import axios from "axios";
 import data from "../Annonces.json"
 import { Link } from "react-router-dom"
 const Home = () => {
-    const [Annonces,setAnnonces] = useState([
-       data.map(item => item)
-    ]);
+    const [Annonces,setAnnonces] = useState([]);
+    useEffect(() => {
+      axios.get('http://172.20.10.3:8000/annonces/get_all')
+            .then(response => {
+              console.log (response.data)
+              console.log(Object.values(response.data))
+              setAnnonces(Object.values(response.data))
+            })
+            .catch(error => {
+              console.log("An error has occured")
+            }
+          );}, []);
+
     function DataList() {
         const [isLoading, setIsLoading] = useState(false);
         const [error, setError] = useState(null);
       
-        useEffect(() => {
-          setIsLoading(true);
-          axios.get('https://your-api-endpoint.com/data')
-            .then(response => {
-              setAnnonces(response.data);
-              setIsLoading(false);
-            })
-            .catch(error => {
-              setError(error);
-              setIsLoading(false);
-            });
-        }, []);
-      
-        if (isLoading) {
+  if (isLoading) {
           return <p>Loading...</p>;
         }
         if (error) {
@@ -38,8 +35,9 @@ const Home = () => {
         }
     }
     return ( 
+      <>
+        <LogedNavBar/>
         <div className="home">
-            <LogedNavBar/>
             <h1>Trouver L'immobilier<br/> 
             Qui Vous Convient</h1>
             <h5>Une excellente platforme pour vendre,<br /> 
@@ -58,12 +56,14 @@ const Home = () => {
                 Nos Recommendations
             </h1>
             <div className="grid-container">
-            {data.map(item => (
-                 <Link className="grid-item" key={item.id} to={`/Annonces/:${item.id}`}>
-                 <div className="grid-item" key={item.id}><Annonce picture="" title={item.titre}location={item.location.state + "," + item.location.city} type={item.typeDuBien} category={item.typeDeTransaction} surface={item.surface} date={item.date} price={item.prix} /></div>
-                 </Link>
+            {Annonces.map(item => (
+                  <Link className="grid-item" key={item.id} to={`/Annonces/:${item.id}`}>   
+                  {/* {console.log(item.image)} */}
+                   <div className="grid-item" key={item.id}><Annonce picture={item.image} title={item.titre}location={item.commune +" ," + item.wilaya} type={item.letype} category={item.categorie} surface={item.surface} date={item.data} price={item.prix} /></div>
+                  </Link>
              ))}
             </div>
+{/*             
             <div className="container-pourquoi">
                 <div className="img"></div>
                 <div className="reasons">
@@ -74,8 +74,9 @@ const Home = () => {
             </div>
             <div className="foter">
                 <MyFooter/>
-            </div>
+            </div> */}
         </div>
+      </>
      );
 }
  

@@ -4,6 +4,7 @@ import PopUp from '../components/PopUp';
 import './InscriptionForm.css';
 import '../App.css'
 import axios from 'axios';
+import { Link } from 'react-router-dom';
 const InscriptionForm = () => {
   const [familyName, setFamilyName] = useState('');
   const [firstName, setFirstName] = useState('');
@@ -20,9 +21,16 @@ const InscriptionForm = () => {
     formData.append('image', image)
     console.log(image)
     
-    axios.post('http://benabbes05ilyes.pythonanywhere.com/annonces/add_user/', formData)
+    axios.post('http://172.20.10.3:8000/annonces/add_user/', formData)
       .then(response => {
+        console.log("salam")
         console.log(response);
+        if(response.data.exist === "True"){
+          window.location.href = "/HomeConnected";
+        }
+        else{
+          window.location.href = "/InscriptionForm";
+        }
         /*setFamilyName({familyName: ''});
         setFirstName({firstName: ''});
         setDateOfBirth({dateOfBirth: ''});
@@ -98,7 +106,9 @@ const InscriptionForm = () => {
             </tr>
         </tbody>
     </table>       
-    <button type="submit" className='Submit'>Enregistrer</button>
+    <Link to="/HomeConnected">
+    <button type="submit" className='Submit' onClick={handleSubmit}>Enregistrer</button>
+    </Link>
       </form>
       </div>
       

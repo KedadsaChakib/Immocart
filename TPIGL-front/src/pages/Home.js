@@ -12,19 +12,20 @@ import MyFooter from '../components/MyFooter';
 const Home = () => {
   const [Annonces,setAnnonces] = useState([]);
   useEffect(() => {
-      axios.get('http://192.168.74.104:8000/annonces/get_all')
-            .then(res => {
-              const lists = Object.entries(res.data).map(item => item[1]);
-              console.log(res.data);
-              console.log(lists);  
-              setAnnonces(lists);
-              console.log(Annonces);
+      axios.get('http://172.20.10.3:8000/annonces/get_all')
+            .then(response => {
+              console.log (response.data)
+              console.log(Object.values(response.data))
+              setAnnonces(Object.values(response.data))
             })
             .catch(error => {
-            });}, []);
+              console.log("An error has occured")
+            }
+          );}, []);
     return ( 
-        <div className="home">
+      <>
             <Navbar></Navbar>
+        <div className="home">
             <h1>Trouver L'immobilier<br/> 
             Qui Vous Convient</h1>
             <h5>Une excellente platforme pour vendre,<br /> 
@@ -46,13 +47,14 @@ const Home = () => {
             <div className="grid-container">
             {Annonces.map(item => {
                  return(
-                <Link className="grid-item" key={item.id} to={`/Annonces/:${item.id}`}>
-                  <Annonce picture="" title={item.titre}location={item.location.state + "," + item.location.city} type={item.typeDuBien} category={item.typeDeTransaction} surface={item.surface} date={item.date} price={item.prix} />
+                <Link className="grid-item" key={item.id} to={`/Annonces/:${item.id}`}>   
+                {/* {console.log(item.image)} */}
+                  <Annonce picture={item.image} title={item.titre}location={item.commune +" ," + item.wilaya} type={item.letype} category={item.categorie} surface={item.surface} date={item.data} price={item.prix} />
                 </Link>
                  )
               })}
             </div>
-            <div className="container-pourquoi">
+            {/* <div className="container-pourquoi">
                 <div className="img">
                   <p>Pourquoi Nous Choisir?</p>
                 </div>
@@ -63,9 +65,10 @@ const Home = () => {
                 </div>
             </div>
             <div className="foter">
-                <MyFooter/>
-            </div>
+                {/* <MyFooter/> 
+            </div> */}
         </div>
+      </>
      );
 }
  

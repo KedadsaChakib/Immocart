@@ -7,13 +7,13 @@ import {AiOutlineHome} from "react-icons/ai";
 import {RxDimensions} from "react-icons/rx"
 import {BsCalendarDate} from "react-icons/bs"
 import {MdAttachMoney} from "react-icons/md"
-const Annonce = ({ id, picture, title, location, category, type, surface, date, price }) => {
+const Annonce = ({ id, picture, title, location, category, type, surface, date, price}) => {
   /*const handleSubmit = (event) =>{
       
       window.location.pathname = "/Annonces/:"  }*/
   return(
   <div className='Annonce'>
-    <img src={picture} alt="Not found"/>
+    <img src={`data:image/jpeg;base64,${picture}`} alt="Not found" />
     <div className="container-info">
         <div className="container-title">
             <h2>{title}</h2>
@@ -27,7 +27,6 @@ const Annonce = ({ id, picture, title, location, category, type, surface, date, 
             <button>{category}</button>
         </div>
     </div>
-
   </div>
   )
 };

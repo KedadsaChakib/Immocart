@@ -2,6 +2,7 @@ import React, { useState, useEffect, useCallback, useRef} from "react";
 import { useParams } from "react-router-dom";
 import {useDropzone} from 'react-dropzone';
 import { Link } from "react-router-dom";
+import axios from "axios";
 
 import "../App.css";
 import editIcon from "../images/icons8-modify-58 (1) 1.svg";
@@ -87,29 +88,30 @@ function InformationProfil({personalInfo,setPersonalInfo,images,setImages}) {
                             <input className="champ" value={personalInfo.prenom} readOnly = {isReadonly} style={{borderWidth: "0px"}} name="prenom" onChange={handleChange}/>
                             <img className="line" src={line} alt="A line"/>
                         </div>
-                        <div className="une-info">
-                            <div className="nom-du-champ">Adresse</div>
-                            <input className="champ" value={personalInfo.address} readOnly = {isReadonly} style={{borderWidth: "0px"}} name="address" onChange={handleChange}/>
-                            <img className="line" src={line} alt="A line"/>
-                        </div>
-                        </div>
-                        <div className="une-ligne">
-                        <div className="une-info">
-                            <div className="nom-du-champ">Numero 1</div>
-                            <input className="champ" value={personalInfo.numero1} readOnly = {isReadonly} style={{borderWidth: "0px"}} name="numero1" onChange={handleChange}/>
-                            <img className="line" src={line} alt="A line"/>
-                        </div>
                         <div className="une-photo">
                             <div className="nom-du-champ-photo">Image de profil</div>
                             <Dropzone onDrop={onDrop} accept={"image/*"} />
                         </div>
+                        {/* <div className="une-info">
+                            <div className="nom-du-champ">Adresse</div>
+                            <input className="champ" value="" readOnly = {isReadonly} style={{borderWidth: "0px"}} name="address" onChange={handleChange}/>
+                            <img className="line" src={line} alt="A line"/>
+                        </div> */}
                         </div>
                         <div className="une-ligne">
                         <div className="une-info">
-                            <div className="nom-du-champ">Numero 2</div>
-                            <input className="champ" value={personalInfo.numero2} readOnly = {isReadonly} style={{borderWidth: "0px"}} name="numero2" onChange={handleChange}/>
+                            <div className="nom-du-champ">Numero 1</div>
+                            <input className="champ" value={personalInfo.sim} readOnly = {isReadonly} style={{borderWidth: "0px"}} name="numero1" onChange={handleChange}/>
                             <img className="line" src={line} alt="A line"/>
                         </div>
+                       
+                        </div>
+                        <div className="une-ligne">
+                        {/* <div className="une-info">
+                            <div className="nom-du-champ">Numero 2</div>
+                            <input className="champ" value="" readOnly = {isReadonly} style={{borderWidth: "0px"}} name="numero2" onChange={handleChange}/>
+                            <img className="line" src={line} alt="A line"/>
+                        </div> */}
                         </div>
                     </div>
             </div>
@@ -120,20 +122,23 @@ function InformationProfil({personalInfo,setPersonalInfo,images,setImages}) {
 
 function MessageProfil({messages,setMessages}) {
     function Messages() {
-
+        
         const listItems = messages.map((item) =>
           <div className="une-ligne-message">
           <div className="un-message">
               <div className="img-info-message">
-                  <img className="profile-image" src={mouh} alt="Profil"/>
+                <div style={{height:"40px",width:"40px"}}>
+
+                  <img className="profile-image" src={`data:image/jpeg;base64,${item.image_sender}`} alt="Profil" style={{width:"100%",height:"100%",objectFit:"cover"}}/>
+                </div>
                   <div className="nom-date-message">
                   <div className="nom-date">
-                    <Link to="/Profil/12">
-                      <div className="nom">{item.senderNom + " " + item.senderPrenom} </div>
+                    <Link to={`/Profil/${item.id_sender}`}>
+                      <div className="nom">{item.nom_sender + " " + item.prenom_sender} </div>
                     </Link>
-                      <div className="date-message">{item.date}</div>
+                      <div className="date-message">{item.dateMsg}</div>
                   </div>
-              <   div className="le-message">{item.message}</div>
+              <   div className="le-message">{item.msg}</div>
                   </div>
               </div>
               <img className="line" src={line2} alt="A line"/>
@@ -168,10 +173,11 @@ function Titre({titre}) {
 function Image({images,personalInfo}){
     return(
         <div className="image-profil-container">
+            {/* {console.log(images)} */}
             <div className="image-profil-subcontainer">
 
             <div className="image-profil-container-cadre">
-                <img  src={images[0]} alt=""/>
+                <img  src={`data:image/jpeg;base64,${images}`} alt="kdijsfol" style={{width:"100%",height:"100%",objectFit:"cover"}}/>
             </div>
             <div className="image-profil-container-name">
                 {personalInfo.nom + " " + personalInfo.prenom}
@@ -202,23 +208,35 @@ const MonProfil = ()=>{
         {
             nom:"Kedadsa",
             prenom:"Islam",
-            address:"smfj",
             email: "fsdjmq",
-            numero1:"sfdl",
-            numero2:"ldfs",
+            sim:"sfdl",
         }
     )
     
     const [messages,setMessages] = useState([{
-        senderNom:"Nom",
-        senderPrenom:  "Prenom",
-        senderImage:"Image",
-        date:"01/05/2020",
-        message:"bonjour tout le monde"}])
+        nom_sender:"Nom",
+        prenom_sender:  "Prenom",
+        image_sender:"Image",
+        dateMsg:"01/05/2020",
+        msg:"bonjour tout le monde"}])
+
     const [images, setImages] = useState([]);
+
+    useEffect(() => {
+        axios.get('http://172.20.10.3:8000/annonces/mon_compte')
+              .then(response => {
+                // console.log (response.data)
+                setPersonalInfo(response.data.profile)
+                setMessages(Object.values(response.data.messages))
+                setImages(response.data.profile.image)
+                // console.log(Object.values(response.data))
+              })
+              .catch(error => {
+                console.log("An error has occured")
+              }
+            );}, []);
     return(
     <>
-
     <MesAnnoncesContainer titre={titre} personalInfo={personalInfo} setPersonalInfo={setPersonalInfo} images={images} setImages={setImages} messages={messages} setMessages ={setMessages}/>
     </>
     )
