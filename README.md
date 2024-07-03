@@ -1,4 +1,4 @@
-# Immocart: Real Estate Listings Application
+# Immocart: Real Estate Listings App Frontend
 
 ## Project Overview
 Immocart is an innovative real estate listings application developed to provide users with a seamless and intuitive experience in exploring real estate options.
